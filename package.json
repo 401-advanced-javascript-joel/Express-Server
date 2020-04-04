@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/401-advanced-javascript-joel/Lab-07-Express-Server/issues"
   },
-  "homepage": "https://github.com/401-advanced-javascript-joel/Lab-07-Express-Server#readme"
+  "homepage": "https://github.com/401-advanced-javascript-joel/Lab-07-Express-Server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^25.2.7",
+    "js-doc": "^0.5.0",
+    "supergoose": "^0.2.6"
+  }
 }
