@@ -1,12 +1,15 @@
-# Lab Class 07 Express Server
+# Lab 07 - Express Server
+
+This is a simple express server that allows you to preform CRUD options on categories and products.
 
 ## Author: Joel Watson
 
 ### Links and Resources
- - [Pull Request](#)
- - [CI/CD](#)
- - [Swagger Docs](#)
- - [Heroku App](#)
+
+- [PR Lab 07](https://github.com/401-advanced-javascript-joel/Express-Server/pull/1)
+- [CI/CD Lab 07](https://github.com/401-advanced-javascript-joel/Express-Server/pull/1/checks)
+- [Swagger Docs](https://joel-express-server.herokuapp.com/api-docs)
+- [Heroku App](https://joel-express-server.herokuapp.com/)
 
 ### Setup
 
@@ -21,4 +24,5 @@
 - `npm test`
 
 ### UML
-![UML](#)
+
+![UML](https://drive.google.com/uc?export=view&id=1IBLO_1U_ULRAkHMb6vFSup1o89HEojOW)
