@@ -1,8 +1,7 @@
 'use strict';
 
+const db = require('./data/mongoose');
 const app = require('./lib/server');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
-app.listen(port, () => {
-  console.log(`App running at http://localhost:${port}`);
-});
+app.start(port, db);
