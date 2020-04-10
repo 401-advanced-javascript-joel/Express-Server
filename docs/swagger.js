@@ -16,7 +16,7 @@ const options = {
     schemes: ['http'],
   },
   basedir: __dirname, //app absolute path
-  files: ['../lib/server.js'], //Path to the API handle folder
+  files: ['../lib/server.js', '../lib/routes/*.js'], //Path to the API handle folder
 };
 
 module.exports = { swagger, options };
