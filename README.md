@@ -10,6 +10,8 @@ This is a simple express server that allows you to preform CRUD options on categ
 - [CI/CD Lab 07](https://github.com/401-advanced-javascript-joel/Express-Server/pull/1/checks)
 - [PR Lab 08](https://github.com/401-advanced-javascript-joel/Express-Server/pull/2)
 - [CI/CD Lab 08](https://github.com/401-advanced-javascript-joel/Express-Server/pull/2/checks)
+- [PR Lab 09](https://github.com/401-advanced-javascript-joel/Express-Server/pull/3)
+- [CI/CD Lab 09](https://github.com/401-advanced-javascript-joel/Express-Server/pull/3/checks)
 - [Swagger Docs](https://joel-express-server.herokuapp.com/api-docs)
 - [Heroku App](https://joel-express-server.herokuapp.com/)
 
@@ -34,3 +36,7 @@ Lab 07
 Lab 08
 
 ![UML 08](https://drive.google.com/uc?export=view&id=1vNvXKK7Ol272aeXS27FpKx2AEsdzBYMX)
+
+Lab 09
+
+![UML 09](https://drive.google.com/uc?export=view&id=1Inyr_KxN752MbbtPn6UkZTRntKrsOQ8G)
