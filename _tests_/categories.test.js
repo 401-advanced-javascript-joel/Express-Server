@@ -19,7 +19,7 @@ describe('Testing categoriesModel create method', () => {
 
   test('Should fail to create new category', async () => {
     const result = await categoriesModel.create({});
-    expect(result).toBe(undefined);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });
@@ -39,11 +39,18 @@ describe('Testing categoriesModel readOne method', () => {
     expect(result._id).toEqual(category._id);
   });
 
+  test('Should fail to read the category given a nonexisting id', async () => {
+    errorSpy.mockClear();
+    const id = '5e926a2a17c00458508ad631';
+    const result = await categoriesModel.readOne(id);
+    expect(result).toBeNull();
+  });
+
   test('Should fail to read the category given invalid id', async () => {
     errorSpy.mockClear();
-    const id = '5e8eb97888854d039cc08a88c';
+    const id = '5e926a2a17c00458508ad63';
     const result = await categoriesModel.readOne(id);
-    expect(result).toBe(undefined);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });
@@ -55,12 +62,19 @@ describe('Testing categoriesModel update method', () => {
     const result = await categoriesModel.update(category._id, update);
   });
 
-  test('Should fail to update the category given invalid id', async () => {
-    errorSpy.mockClear();
-    const id = '5e8eb97888854d039cc08a88c';
+  test('Should fail to update the category given nonexisting id', async () => {
+    const id = '5e926a2a17c00458508ad631';
     const update = { name: 'Updated test category' };
     const result = await categoriesModel.update(id, update);
-    expect(result).toBe(undefined);
+    expect(result).toBeNull();
+  });
+
+  test('Should fail to update the category given invalid id', async () => {
+    errorSpy.mockClear();
+    const id = '5e926a2a17c00458508ad63';
+    const update = { name: 'Updated test category' };
+    const result = await categoriesModel.update(id, update);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });
@@ -72,11 +86,17 @@ describe('Testing categoriesModel delete method', () => {
     expect(result._id).toEqual(category._id);
   });
 
+  test('should fail to delete when given a nonexisting id', async () => {
+    const id = '5e926a2a17c00458508ad631';
+    const result = await categoriesModel.delete(id);
+    expect(result).toBeNull();
+  });
+
   test('should fail to delete when given an invalid id', async () => {
     errorSpy.mockClear();
-    const id = '5e8eb97888854d039cc08a88c';
+    const id = '5e926a2a17c00458508ad63';
     const result = await categoriesModel.delete(id);
-    expect(result).toBe(undefined);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });

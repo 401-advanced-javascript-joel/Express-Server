@@ -20,7 +20,7 @@ describe('Testing productsModel create method', () => {
 
   test('Should fail to create new product', async () => {
     const result = await productsModel.create({});
-    expect(result).toBe(undefined);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });
@@ -46,11 +46,17 @@ describe('Testing productsModel readOne method', () => {
     expect(result._id).toEqual(product._id);
   });
 
+  test('Should fail to read the product given nonexisting id', async () => {
+    const id = '5e926a2a17c00458508ad631';
+    const result = await productsModel.readOne(id);
+    expect(result).toBeNull();
+  });
+
   test('Should fail to read the product given invalid id', async () => {
     errorSpy.mockClear();
-    const id = '5e8eb97888854d039cc08a88c';
+    const id = '5e926a2a17c00458508ad63';
     const result = await productsModel.readOne(id);
-    expect(result).toBe(undefined);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });
@@ -65,12 +71,19 @@ describe('Testing productsModel update method', () => {
     const result = await productsModel.update(product._id, update);
   });
 
-  test('Should fail to update the product given invalid id', async () => {
-    errorSpy.mockClear();
-    const id = '5e8eb97888854d039cc08a88c';
+  test('Should fail to update the product given nonexisting id', async () => {
+    const id = '5e926a2a17c00458508ad631';
     const update = { name: 'Updated test product' };
     const result = await productsModel.update(id, update);
-    expect(result).toBe(undefined);
+    expect(result).toBeNull();
+  });
+
+  test('Should fail to update the product given invalid id', async () => {
+    errorSpy.mockClear();
+    const id = '5e926a2a17c00458508ad63';
+    const update = { name: 'Updated test product' };
+    const result = await productsModel.update(id, update);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });
@@ -85,11 +98,17 @@ describe('Testing productsModel delete method', () => {
     expect(result._id).toEqual(product._id);
   });
 
+  test('should fail to delete when given a nonexisting id', async () => {
+    const id = '5e926a2a17c00458508ad631';
+    const result = await productsModel.delete(id);
+    expect(result).toBeNull();
+  });
+
   test('should fail to delete when given an invalid id', async () => {
     errorSpy.mockClear();
-    const id = '5e8eb97888854d039cc08a88c';
+    const id = '5e926a2a17c00458508ad63';
     const result = await productsModel.delete(id);
-    expect(result).toBe(undefined);
+    expect(result.error).not.toBe(undefined);
     expect(errorSpy).toHaveBeenCalled();
   });
 });

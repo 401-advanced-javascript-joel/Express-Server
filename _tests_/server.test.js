@@ -50,7 +50,7 @@ describe('Test add category', () => {
     };
     const res = await agent.post('/api/v1/categories').send(badCategory);
     expect(res.status).toBe(400);
-    expect(res.body).toEqual({});
+    expect(res.body.error.name).toBe('ValidationError');
   });
 });
 
@@ -87,7 +87,7 @@ describe('Test update category', () => {
   });
 
   test('Should fail to update an invlalid category', async () => {
-    const res = await agent.put('/api/v1/categories/5e8eb97888854d039cc08a88c');
+    const res = await agent.put('/api/v1/categories/5e926a2a17c00458508ad631');
     expect(res.status).toBe(404);
     expect(res.body).toEqual({});
   });
@@ -104,7 +104,7 @@ describe('Test delete category', () => {
 
   test('Should fail to delete an invalid category', async () => {
     const res = await agent.delete(
-      '/api/v1/categories/5e8eb97888854d039cc08a88c',
+      '/api/v1/categories/5e926a2a17c00458508ad631',
     );
     expect(res.status).toBe(404);
     expect(res.body).toEqual({});
@@ -126,7 +126,7 @@ describe('Test add product', () => {
     };
     const res = await agent.post('/api/v1/products').send(badProduct);
     expect(res.status).toBe(400);
-    expect(res.body).toEqual({});
+    expect(res.body.error.name).toEqual('ValidationError');
   });
 });
 
@@ -156,7 +156,7 @@ describe('Test update product', () => {
   });
 
   test('Should fail to update an invalid product', async () => {
-    const res = await agent.put('/api/v1/products/5e8eb97888854d039cc08a88c');
+    const res = await agent.put('/api/v1/products/5e926a2a17c00458508ad631');
     expect(res.status).toBe(404);
     expect(res.body).toEqual({});
   });
@@ -172,9 +172,7 @@ describe('Test delete product', () => {
   });
 
   test('Should fail to delete an invalid product', async () => {
-    const res = await agent.delete(
-      '/api/v1/products/5e8eb97888854d039cc08a88c',
-    );
+    const res = await agent.delete('/api/v1/products/5e926a2a17c00458508ad631');
     expect(res.status).toBe(404);
     expect(res.body).toEqual({});
   });
