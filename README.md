@@ -4,8 +4,6 @@ This is a simple express server that allows you to preform CRUD options on categ
 
 ## Author: Joel Watson
 
-MONGODB_URI=mongodb+srv://taskapp:z2VBv3e\$mznw@cluster-alpha-tcrls.mongodb.net/test
-
 ### Links and Resources
 
 - [PR Lab 07](https://github.com/401-advanced-javascript-joel/Express-Server/pull/1)
