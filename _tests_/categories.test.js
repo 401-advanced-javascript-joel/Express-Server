@@ -26,7 +26,7 @@ describe('Testing categoriesModel create method', () => {
 
 describe('Testing categoriesModel read method', () => {
   test('Should read all categories', async () => {
-    await categoriesModel.create({ name: 'test category' });
+    await categoriesModel.create({ name: 'test categoriesModel' });
     const results = await categoriesModel.read();
     expect(results.length).toBe(2);
   });
@@ -34,7 +34,9 @@ describe('Testing categoriesModel read method', () => {
 
 describe('Testing categoriesModel readOne method', () => {
   test('Should read the specified category', async () => {
-    const category = await categoriesModel.create({ name: 'test category' });
+    const category = await categoriesModel.create({
+      name: 'test categoriesModel 1',
+    });
     const result = await categoriesModel.readOne(category._id);
     expect(result._id).toEqual(category._id);
   });
@@ -57,7 +59,9 @@ describe('Testing categoriesModel readOne method', () => {
 
 describe('Testing categoriesModel update method', () => {
   test('Should update the category', async () => {
-    const category = await categoriesModel.create({ name: 'test category' });
+    const category = await categoriesModel.create({
+      name: 'test categoriesModel 2',
+    });
     const update = { name: 'Updated test category' };
     const result = await categoriesModel.update(category._id, update);
   });
@@ -81,7 +85,9 @@ describe('Testing categoriesModel update method', () => {
 
 describe('Testing categoriesModel delete method', () => {
   test('should delete specified category', async () => {
-    const category = await categoriesModel.create({ name: 'test category' });
+    const category = await categoriesModel.create({
+      name: 'test categoriesModel 3',
+    });
     const result = await categoriesModel.delete(category._id);
     expect(result._id).toEqual(category._id);
   });

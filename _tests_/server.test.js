@@ -5,11 +5,28 @@ const mockDB = require('../data/mock-db');
 const { server } = require('../lib/server');
 const agent = request(server);
 
-const category = {
-  name: 'test category',
-  display_name: 'test category',
-  description: 'testing category CRUD',
-};
+const categories = [
+  {
+    name: 'test category',
+    display_name: 'test category',
+    description: 'testing category CRUD',
+  },
+  {
+    name: 'test category 1',
+    display_name: 'test category',
+    description: 'testing category CRUD',
+  },
+  {
+    name: 'test category 2',
+    display_name: 'test category',
+    description: 'testing category CRUD',
+  },
+  {
+    name: 'test category 3',
+    display_name: 'test category',
+    description: 'testing category CRUD',
+  },
+];
 
 const product = {
   category: 'test category',
@@ -38,9 +55,9 @@ describe('Test home page and 404', () => {
 
 describe('Test add category', () => {
   test('Should add a new category', async () => {
-    const res = await agent.post('/api/v1/categories').send(category);
+    const res = await agent.post('/api/v1/categories').send(categories[0]);
     expect(res.status).toBe(200);
-    expect(res.body.name).toBe(category.name);
+    expect(res.body.name).toBe(categories[0].name);
   });
 
   test('Should fail to add an invalid category', async () => {
@@ -62,7 +79,7 @@ describe('Test reading categories', () => {
   });
 
   test('Should get a specific category', async () => {
-    const response = await agent.post('/api/v1/categories').send(category);
+    const response = await agent.post('/api/v1/categories').send(categories[1]);
     const id = response.body._id;
     const res = await agent.get('/api/v1/categories/' + id);
     expect(res.status).toBe(200);
@@ -72,7 +89,7 @@ describe('Test reading categories', () => {
 
 describe('Test update category', () => {
   test('Should update category', async () => {
-    const response = await agent.post('/api/v1/categories').send(category);
+    const response = await agent.post('/api/v1/categories').send(categories[2]);
     const id = response.body._id;
     const updateCategory = {
       name: 'Updated name',
@@ -95,7 +112,7 @@ describe('Test update category', () => {
 
 describe('Test delete category', () => {
   test('Should delete the category', async () => {
-    const response = await agent.post('/api/v1/categories').send(category);
+    const response = await agent.post('/api/v1/categories').send(categories[3]);
     const id = response.body._id;
     const res = await agent.delete('/api/v1/categories/' + id);
     expect(res.status).toBe(200);
