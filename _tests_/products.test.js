@@ -14,6 +14,8 @@ describe('Testing productsModel create method', () => {
     const result = await productsModel.create({
       category: 'test category',
       name: 'test product',
+      price: 5.0,
+      inStock: 5,
     });
     expect(result.name).toBe('test product');
   });
@@ -29,7 +31,9 @@ describe('Testing productsModel read method', () => {
   test('Should read all products', async () => {
     await productsModel.create({
       category: 'test category',
-      name: 'test product',
+      name: 'test product2',
+      price: 15.0,
+      inStock: 15,
     });
     const results = await productsModel.read();
     expect(results.length).toBe(2);
@@ -40,7 +44,9 @@ describe('Testing productsModel readOne method', () => {
   test('Should read the specified product', async () => {
     const product = await productsModel.create({
       category: 'test category',
-      name: 'test product',
+      name: 'test product3',
+      price: 25.0,
+      inStock: 25,
     });
     const result = await productsModel.readOne(product._id);
     expect(result._id).toEqual(product._id);
@@ -92,7 +98,9 @@ describe('Testing productsModel delete method', () => {
   test('should delete specified product', async () => {
     const product = await productsModel.create({
       category: 'test category',
-      name: 'test product',
+      name: 'test product4',
+      price: 35.0,
+      inStock: 35,
     });
     const result = await productsModel.delete(product._id);
     expect(result._id).toEqual(product._id);

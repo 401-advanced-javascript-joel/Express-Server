@@ -8,31 +8,30 @@ const agent = request(server);
 const categories = [
   {
     name: 'test category',
-    display_name: 'test category',
-    description: 'testing category CRUD',
+    displayName: 'test category',
   },
   {
     name: 'test category 1',
-    display_name: 'test category',
-    description: 'testing category CRUD',
+    displayName: 'test category',
   },
   {
     name: 'test category 2',
-    display_name: 'test category',
-    description: 'testing category CRUD',
+    displayName: 'test category',
   },
   {
     name: 'test category 3',
-    display_name: 'test category',
-    description: 'testing category CRUD',
+    displayName: 'test category',
   },
 ];
 
 const product = {
   category: 'test category',
   name: 'test product',
-  display_name: 'test product',
   description: 'testing product CRUD',
+  image:
+    'https://images.unsplash.com/photo-1534644107580-3a4dbd494a95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+  price: 500.0,
+  inStock: 5,
 };
 
 beforeAll(async () => await mockDB.connectMock());
@@ -62,7 +61,7 @@ describe('Test add category', () => {
 
   test('Should fail to add an invalid category', async () => {
     const badCategory = {
-      display_name: 'test category',
+      displayName: 'test category',
       description: 'testing category CRUD',
     };
     const res = await agent.post('/api/v1/categories').send(badCategory);
@@ -93,8 +92,7 @@ describe('Test update category', () => {
     const id = response.body._id;
     const updateCategory = {
       name: 'Updated name',
-      display_name: 'Updated display name',
-      description: 'Updated description',
+      displayName: 'Updated display name',
     };
     const res = await agent
       .put('/api/v1/categories/' + id)
@@ -138,7 +136,7 @@ describe('Test add product', () => {
   test('Should fail to add an invalid new product', async () => {
     const badProduct = {
       name: 'test product',
-      display_name: 'test product',
+      displayName: 'test product',
       description: 'testing product CRUD',
     };
     const res = await agent.post('/api/v1/products').send(badProduct);
